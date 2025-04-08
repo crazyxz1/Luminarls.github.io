@@ -8,11 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Roboto', sans-serif;
       background: #ffe6f0;
@@ -36,19 +32,8 @@
       animation: float 20s infinite ease-in-out;
     }
 
-    .circle:nth-child(1) {
-      width: 300px;
-      height: 300px;
-      top: 10%;
-      left: 15%;
-    }
-
-    .circle:nth-child(2) {
-      width: 500px;
-      height: 500px;
-      bottom: 5%;
-      right: 10%;
-    }
+    .circle:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 15%; }
+    .circle:nth-child(2) { width: 500px; height: 500px; bottom: 5%; right: 10%; }
 
     @keyframes float {
       0% { transform: translateY(0px); }
@@ -64,6 +49,21 @@
       height: 100vh;
       text-align: center;
       padding: 2rem;
+    }
+
+    .bot-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #d63384;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .bot-avatar:hover {
+      transform: scale(1.05);
     }
 
     h1 {
@@ -104,49 +104,59 @@
 
     .btn {
       padding: 1rem 2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
       background-color: #d63384;
       color: white;
-      cursor: pointer;
-      transition: background 0.3s;
       text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
     }
 
     .btn:hover {
-      background-color: #bf2c76;
+      background-color: #c22571;
     }
   </style>
 </head>
 <body>
+
   <div class="background-circles">
     <div class="circle"></div>
     <div class="circle"></div>
   </div>
 
   <div class="container">
+    <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667" 
+         alt="Avatar do Bot" class="bot-avatar">
+
     <h1>Luminarls</h1>
-    <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
+    <p>Bem-vindo ao site oficial do Luminarls!</p>
 
     <div class="commands">
-      <strong>Comandos principais:</strong>
-      <code>!luzes</code><br>
-      <code>!luz</code><br>
-      <code>!avatar</code><br>
-      <code>!banner</code><br>
-      <code>!xp</code><br><br>
-      <strong>Comandos em slash:</strong>
-      <code>/luzguia</code><br>
-      <code>/luminfo</code><br>
-      <code>/avatar</code><br>
-      <code>/rank</code>
-    </div>
-
-    <div class="buttons">
-      <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">Convidar o Bot</a>
-      <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">Servidor de Suporte</a>
-    </div>
-  </div>
-</body>
-</html>
+        <strong>Comandos principais:</strong>
+        <div class="commands-list">
+          <code>!luzes</code>
+          <code>!luz</code>
+          <code>!avatar</code>
+          <code>!banner</code>
+          <code>!xp</code>
+        </div>
+      
+        <br>
+      
+        <strong>Comandos em slash:</strong>
+        <div class="commands-list">
+          <code>/luzguia</code>
+          <code>/luminfo</code>
+          <code>/avatar</code>
+          <code>/rank</code>
+        </div>
+      </div>
+      
+      <div class="buttons">
+        <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">
+          Convidar o Bot
+        </a>
+        
+        <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">
+          Servidor de Suporte
+        </a>
+      </div>
