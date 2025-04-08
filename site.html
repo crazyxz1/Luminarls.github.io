@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminarls</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #ffe6f0;
+      color: #3a3a3a;
+      overflow: hidden;
+    }
+
+    .background-circles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 105, 180, 0.2);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 15%; }
+    .circle:nth-child(2) { width: 500px; height: 500px; bottom: 5%; right: 10%; }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .bot-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #d63384;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .bot-avatar:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-family: 'Architects Daughter', cursive;
+      font-size: 3rem;
+      color: #d63384;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+
+    .commands {
+      background-color: #fff0f6;
+      border-left: 4px solid #d63384;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      text-align: left;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .commands strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #d63384;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      background-color: #d63384;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c22571;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-circles">
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="container">
+    <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667" 
+         alt="Avatar do Bot" class="bot-avatar">
+
+    <h1>Luminarls</h1>
+    <p>Bem-vindo ao site oficial do Luminarls!</p>
+
+    <div class="commands">
+        <strong>Comandos principais:</strong>
+        <div class="commands-list">
+          <code>!luzes</code>
+          <code>!luz</code>
+          <code>!avatar</code>
+          <code>!banner</code>
+          <code>!xp</code>
+        </div>
+      
+        <br>
+      
+        <strong>Comandos em slash:</strong>
+        <div class="commands-list">
+          <code>/luzguia</code>
+          <code>/luminfo</code>
+          <code>/avatar</code>
+          <code>/rank</code>
+        </div>
+      </div>
+      
+      <div class="buttons">
+        <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">
+          Convidar o Bot
+        </a>
+        
+        <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">
+          Servidor de Suporte
+        </a>
+      </div>
