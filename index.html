@@ -13,6 +13,7 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Roboto', sans-serif;
       background: #ffe6f0;
@@ -117,8 +118,24 @@
     .btn:hover {
       background-color: #bf2c76;
     }
+
+    /* Avatar com borda e zoom no hover */
+    .bot-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 4px solid #d63384;
+      transition: transform 0.3s ease;
+    }
+
+    .bot-avatar:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
+
 <body>
   <div class="background-circles">
     <div class="circle"></div>
@@ -126,6 +143,10 @@
   </div>
 
   <div class="container">
+    <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667"
+      alt="Avatar Luminarls"
+      class="bot-avatar">
+
     <h1>Luminarls</h1>
     <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
 
