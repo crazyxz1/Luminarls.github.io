@@ -152,32 +152,47 @@
       </div>
       
       <div class="buttons">
-        <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">
-          Convidar o Bot
-        </a>
-        
-        <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">
-          Servidor de Suporte
-        </a>
-      </div>
+  <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">
+    Convidar o Bot
+  </a>
+
+  <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">
+    Servidor de Suporte
+  </a>
+
+  <button class="btn" onclick="enviarSugestao()">
+    Enviar Sugestão
+  </button>
+</div>
+
+<script>
+  async function enviarSugestao() {
+    const nome = prompt("Digite seu nome:");
+    const sugestao = prompt("Digite sua sugestão:");
+
+    if (!nome || !sugestao) return alert("Nome ou sugestão não preenchidos!");
+
+    const dataHora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+
+    const webhookURL = 'SUA_WEBHOOK_URL'; // troca pela URL do webhook
+
+    const payload = {
+      content: `📩 **Nova Sugestão Recebida**\n\n👤 Nome: ${nome}\n🕒 Data/Hora: ${dataHora}\n💡 Sugestão: ${sugestao}`
+    };
+
+    await fetch(webhookURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    alert("Sugestão enviada com sucesso!");
+  }
+</script>
+    
 <footer>
   © 2025 Luminarls - Todos os direitos reservados.
 </footer>
 
-<audio id="lofi-audio" src="https://cdn.pixabay.com/audio/2023/01/17/audio_68ec2058fc.mp3" loop></audio>
-
-<script>
-  const audio = document.getElementById('lofi-audio');
-
-  function playAudio() {
-    audio.play();
-    document.removeEventListener('click', playAudio);
-    document.removeEventListener('touchstart', playAudio);
-  }
-
-  document.addEventListener('click', playAudio);
-  document.addEventListener('touchstart', playAudio);
-</script>
-    
 </body>
 </html>
