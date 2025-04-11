@@ -164,7 +164,20 @@
   © 2025 Luminarls - Todos os direitos reservados.
 </footer>
 
-<audio id="lofi-audio" src="https://cdn.pixabay.com/audio/2023/01/17/audio_68ec2058fc.mp3" autoplay loop></audio>
+<audio id="lofi-audio" src="https://cdn.pixabay.com/audio/2023/01/17/audio_68ec2058fc.mp3" loop></audio>
 
+<script>
+  const audio = document.getElementById('lofi-audio');
+
+  function playAudio() {
+    audio.play();
+    document.removeEventListener('click', playAudio);
+    document.removeEventListener('touchstart', playAudio);
+  }
+
+  document.addEventListener('click', playAudio);
+  document.addEventListener('touchstart', playAudio);
+</script>
+    
 </body>
 </html>
