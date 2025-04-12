@@ -244,7 +244,30 @@
       const data = new Date().toLocaleString("pt-BR");
 
       const payload = {
-        content: `📩 **Nova sugestão recebida!**\n**Nome:** ${nome}\n**Data:** ${data}\n**Mensagem:**\n${mensagem}`
+        embeds: [{
+          title: "📩 Nova sugestão recebida!",
+          color: 0xd63384,  // Cor do Embed
+          fields: [
+            {
+              name: "👤 Nome",
+              value: nome || "Não informado",
+              inline: true
+            },
+            {
+              name: "📅 Data",
+              value: data,
+              inline: true
+            },
+            {
+              name: "💡 Sugestão",
+              value: mensagem
+            }
+          ],
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: "Sistema de sugestões - Luminarls"
+          }
+        }]
       };
 
       fetch("https://discord.com/api/webhooks/1360745762752958677/nVBLwZmOPcG0NtJFzotm-ONfTND1H57ct6FukppcRCo8mkzp1UkTN5sUb6YTVDySe6kF", {
