@@ -36,6 +36,7 @@
       justify-content: center;
       gap: 2rem;
       z-index: 999;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -43,6 +44,7 @@
       color: #d63384;
       font-weight: bold;
       transition: color 0.3s;
+      font-size: 1rem;
     }
 
     nav a:hover {
@@ -81,6 +83,8 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       text-align: left;
+      font-size: 0.95rem;
+      word-break: break-word;
     }
 
     .buttons {
@@ -100,6 +104,9 @@
       cursor: pointer;
       transition: background 0.3s;
       text-decoration: none;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
     }
 
     .btn:hover {
@@ -146,10 +153,37 @@
         flex-direction: column;
         gap: 0.5rem;
         align-items: center;
+        padding: 0.8rem;
       }
 
-      .buttons {
-        flex-direction: column;
+      nav a {
+        font-size: 0.95rem;
+      }
+
+      section {
+        padding: 80px 15px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .commands {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .form-sugestao input,
+      .form-sugestao textarea {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -158,7 +192,7 @@
   <nav>
     <a href="#home">Início</a>
     <a href="#sobre">Sobre</a>
-    <a href="#recursos">Recursos</a>
+    <a href="#comandos">Comandos</a>
     <a href="#suporte">Suporte</a>
     <a href="#sugestoes">Sugestões</a>
   </nav>
@@ -174,8 +208,8 @@
     <p>O Luminarls nasceu para transformar seu servidor em um lugar mais organizado, divertido e funcional. Com comandos que vão desde personalização de perfis até ferramentas administrativas, ele é ideal para qualquer comunidade.</p>
   </section>
 
-  <section id="recursos">
-    <h2>Recursos & Comandos</h2>
+  <section id="comandos">
+    <h2>Comandos</h2>
     <div class="commands">
       <strong>Comandos principais:</strong><br>
       <code>!luzes</code><br>
@@ -226,17 +260,15 @@
       }
     }
 
-    // Exibe a seção correta ao clicar no menu
     links.forEach(link => {
       link.addEventListener("click", function(e) {
         e.preventDefault();
         const id = this.getAttribute("href");
         showSection(id);
-        history.pushState(null, null, id); // Atualiza a URL
+        history.pushState(null, null, id);
       });
     });
 
-    // Formulário de sugestão
     document.getElementById("sugestaoForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const nome = document.getElementById("nome").value;
@@ -246,7 +278,7 @@
       const payload = {
         embeds: [{
           title: "📩 Nova sugestão recebida!",
-          color: 0xd63384,  // Cor do Embed
+          color: 0xd63384,
           fields: [
             {
               name: "👤 Nome",
