@@ -148,10 +148,6 @@
       transform: scale(1.1);
     }
 
-    .mobile-only {
-      display: none;
-    }
-
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -189,18 +185,6 @@
       .form-sugestao textarea {
         font-size: 0.95rem;
       }
-
-      .mobile-only {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        margin-top: 1.5rem;
-      }
-
-      #suporte .buttons {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -208,7 +192,7 @@
   <nav>
     <a href="#home">Início</a>
     <a href="#sobre">Sobre</a>
-    <a href="#comandos">Comandos</a>
+    <a href="#recursos">Recursos</a>
     <a href="#suporte">Suporte</a>
     <a href="#sugestoes">Sugestões</a>
   </nav>
@@ -217,12 +201,6 @@
     <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667" alt="Avatar do bot Luminarls" class="bot-avatar">
     <h2>Luminarls</h2>
     <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
-
-    <!-- Botões visíveis apenas no mobile -->
-    <div class="buttons mobile-only">
-      <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">Convidar o Bot</a>
-      <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">Servidor de Suporte</a>
-    </div>
   </section>
 
   <section id="sobre">
@@ -230,8 +208,8 @@
     <p>O Luminarls nasceu para transformar seu servidor em um lugar mais organizado, divertido e funcional. Com comandos que vão desde personalização de perfis até ferramentas administrativas, ele é ideal para qualquer comunidade.</p>
   </section>
 
-  <section id="comandos">
-    <h2>Comandos</h2>
+  <section id="recursos">
+    <h2>Recursos & Comandos</h2>
     <div class="commands">
       <strong>Comandos principais:</strong><br>
       <code>!luzes</code><br>
@@ -302,12 +280,25 @@
           title: "📩 Nova sugestão recebida!",
           color: 0xd63384,
           fields: [
-            { name: "👤 Nome", value: nome || "Não informado", inline: true },
-            { name: "📅 Data", value: data, inline: true },
-            { name: "💡 Sugestão", value: mensagem }
+            {
+              name: "👤 Nome",
+              value: nome || "Não informado",
+              inline: true
+            },
+            {
+              name: "📅 Data",
+              value: data,
+              inline: true
+            },
+            {
+              name: "💡 Sugestão",
+              value: mensagem
+            }
           ],
           timestamp: new Date().toISOString(),
-          footer: { text: "Sistema de sugestões - Luminarls" }
+          footer: {
+            text: "Sistema de sugestões - Luminarls"
+          }
         }]
       };
 
