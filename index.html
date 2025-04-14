@@ -23,6 +23,7 @@
       background: #ffe6f0;
       color: #3a3a3a;
       padding-top: 80px;
+      transition: padding-top 0.3s;
     }
 
     nav {
@@ -149,19 +150,23 @@
     }
 
     @media (max-width: 600px) {
+      body {
+        padding-top: 60px; /* Adjusted to reduce space on mobile */
+      }
+
       nav {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         align-items: center;
-        padding: 0.8rem;
+        padding: 1rem;
       }
 
       nav a {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
 
       section {
-        padding: 80px 15px;
+        padding: 80px 10px;
       }
 
       h2 {
@@ -174,6 +179,7 @@
 
       .commands {
         font-size: 0.9rem;
+        padding: 0.8rem;
       }
 
       .btn {
@@ -185,18 +191,38 @@
       .form-sugestao textarea {
         font-size: 0.95rem;
       }
+
+      .bot-avatar {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    /* Extra Media Query for larger screens */
+    @media (min-width: 1200px) {
+      nav {
+        padding: 1.5rem 3rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      .btn {
+        max-width: 350px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- MENU ATUALIZADO -->
-<nav>
-  <a href="#home">Início</a>
-  <a href="#sobre">Sobre</a>
-  <a href="#comandos">Comandos</a> <!-- Alterado aqui -->
-  <a href="#suporte">Suporte</a>
-  <a href="#sugestoes">Sugestões</a>
-</nav>
+  <nav>
+    <a href="#home">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#comandos">Comandos</a>
+    <a href="#suporte">Suporte</a>
+    <a href="#sugestoes">Sugestões</a>
+  </nav>
 
   <section id="home" class="active">
     <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667" alt="Avatar do bot Luminarls" class="bot-avatar">
@@ -210,7 +236,7 @@
   </section>
 
   <section id="comandos">
-    <h2>Comandos</h2> <!-- Alterado aqui -->
+    <h2>Comandos</h2>
     <div class="commands">
       <strong>Comandos principais:</strong><br>
       <code>!luzes</code><br>
@@ -277,7 +303,7 @@
       const data = new Date().toLocaleString("pt-BR");
 
       const payload = {
-        embeds: [{
+        embeds: [ {
           title: "📩 Nova sugestão recebida!",
           color: 0xd63384,
           fields: [
