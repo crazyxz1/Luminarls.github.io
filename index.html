@@ -8,15 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Roboto', sans-serif;
@@ -161,51 +154,53 @@
       animation: fadeInFooter 1s ease-out;
     }
 
+    .status-sucesso {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: green;
+      background: #e0f8e9;
+      padding: 0.75rem 1rem;
+      border: 2px solid #4caf50;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+    }
+
+    .status-erro {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #c62828;
+      background: #fdecea;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e53935;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+    }
+
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     @keyframes fadeInSection {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     @keyframes fadeInButtons {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes scaleIn {
-      0% {
-        transform: scale(0.8);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(0.8); }
+      100% { transform: scale(1); }
     }
 
     @keyframes fadeInFooter {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
@@ -259,11 +254,10 @@
   <form class="form-sugestao" id="sugestaoForm">
     <label for="nome">Seu nome para identificação. </label>
     <input type="text" id="nome" required>
-
     <label for="mensagem">Sua sugestão</label>
     <textarea id="mensagem" rows="5" required></textarea>
-
     <button type="submit" class="btn">Enviar</button>
+    <p id="statusMensagem" class="status-sucesso"></p>
   </form>
 </section>
 
@@ -294,6 +288,7 @@
     const nome = document.getElementById("nome").value;
     const mensagem = document.getElementById("mensagem").value;
     const data = new Date().toLocaleString("pt-BR");
+    const status = document.getElementById("statusMensagem");
 
     const payload = {
       embeds: [{
@@ -314,11 +309,19 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     }).then(() => {
-      alert("Sugestão enviada com sucesso!");
+      status.textContent = "Enviado com sucesso!";
+      status.className = "status-sucesso";
+      status.style.display = "block";
       this.reset();
     }).catch(err => {
-      alert("Erro ao enviar sugestão.");
+      status.textContent = "Erro ao enviar sugestão. Tente novamente.";
+      status.className = "status-erro";
+      status.style.display = "block";
       console.error(err);
+    }).finally(() => {
+      setTimeout(() => {
+        status.style.display = "none";
+      }, 4000);
     });
   });
 </script>
