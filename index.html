@@ -23,6 +23,7 @@
       background: #ffe6f0;
       color: #3a3a3a;
       padding-top: 80px;
+      animation: fadeIn 1s ease-out;
     }
 
     nav {
@@ -55,6 +56,8 @@
       display: none;
       padding: 100px 20px;
       text-align: center;
+      opacity: 0;
+      animation: fadeInSection 1s forwards;
     }
 
     section.active {
@@ -92,6 +95,7 @@
       flex-direction: column;
       gap: 1rem;
       align-items: center;
+      animation: fadeInButtons 1s ease-out;
     }
 
     .btn {
@@ -142,6 +146,7 @@
       margin-bottom: 10px;
       border: 4px solid #d63384;
       transition: transform 0.3s ease;
+      animation: scaleIn 1s ease-in-out;
     }
 
     .bot-avatar:hover {
@@ -153,6 +158,54 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: #888;
+      animation: fadeInFooter 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInSection {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInButtons {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0.8);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInFooter {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -168,7 +221,7 @@
 <section id="home" class="active">
   <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png" class="bot-avatar" />
   <h2>Luminarls</h2>
-  <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
+  <p>Transforme seu servidor com um bot incrível! Funcional, interativo e feito para divertir!</p>
 </section>
 
 <section id="sobre">
@@ -184,7 +237,7 @@
     <code>!luz</code><br>
     <code>!avatar</code><br>
     <code>!banner</code><br>
-    <code>!xp</code><br><br>
+    <code>!pay</code><br><br>
     <strong>Comandos em slash:</strong><br>
     <code>/luzguia</code><br>
     <code>/luminfo</code><br>
