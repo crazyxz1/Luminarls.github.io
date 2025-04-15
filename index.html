@@ -148,173 +148,126 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-        padding: 0.8rem;
-      }
-
-      nav a {
-        font-size: 0.95rem;
-      }
-
-      section {
-        padding: 80px 15px;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      .commands {
-        font-size: 0.9rem;
-      }
-
-      .btn {
-        font-size: 0.95rem;
-        padding: 0.8rem 1.5rem;
-      }
-
-      .form-sugestao input,
-      .form-sugestao textarea {
-        font-size: 0.95rem;
-      }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <!-- MENU ATUALIZADO -->
 <nav>
   <a href="#home">Início</a>
   <a href="#sobre">Sobre</a>
-  <a href="#comandos">Comandos</a> <!-- Alterado aqui -->
+  <a href="#comandos">Comandos</a>
   <a href="#suporte">Suporte</a>
   <a href="#sugestoes">Sugestões</a>
 </nav>
 
-  <section id="home" class="active">
-    <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667" alt="Avatar do bot Luminarls" class="bot-avatar">
-    <h2>Luminarls</h2>
-    <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
-  </section>
+<section id="home" class="active">
+  <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png" class="bot-avatar" />
+  <h2>Luminarls</h2>
+  <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
+</section>
 
-  <section id="sobre">
-    <h2>Sobre o Bot</h2>
-    <p>O Luminarls nasceu para transformar seu servidor em um lugar mais organizado, divertido e funcional. Com comandos que vão desde personalização de perfis até ferramentas administrativas, ele é ideal para qualquer comunidade.</p>
-  </section>
+<section id="sobre">
+  <h2>Sobre o Bot</h2>
+  <p>O Luminarls nasceu para transformar seu servidor em um lugar mais organizado, divertido e funcional. Com comandos que vão desde personalização de perfis até ferramentas administrativas, ele é ideal para qualquer comunidade.</p>
+</section>
 
-  <section id="comandos">
-    <h2>Comandos</h2> <!-- Alterado aqui -->
-    <div class="commands">
-      <strong>Comandos principais:</strong><br>
-      <code>!luzes</code><br>
-      <code>!luz</code><br>
-      <code>!avatar</code><br>
-      <code>!banner</code><br>
-      <code>!xp</code><br><br>
-      <strong>Comandos em slash:</strong><br>
-      <code>/luzguia</code><br>
-      <code>/luminfo</code><br>
-      <code>/avatar</code><br>
-      <code>/rank</code>
-    </div>
-  </section>
+<section id="comandos">
+  <h2>Comandos</h2>
+  <div class="commands">
+    <strong>Comandos principais:</strong><br>
+    <code>!luzes</code><br>
+    <code>!luz</code><br>
+    <code>!avatar</code><br>
+    <code>!banner</code><br>
+    <code>!xp</code><br><br>
+    <strong>Comandos em slash:</strong><br>
+    <code>/luzguia</code><br>
+    <code>/luminfo</code><br>
+    <code>/avatar</code><br>
+    <code>/rank</code>
+  </div>
+</section>
 
-  <section id="suporte">
-    <h2>Convite & Suporte</h2>
-    <div class="buttons">
-      <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">Convidar o Bot</a>
-      <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">Servidor de Suporte</a>
-    </div>
-  </section>
+<section id="suporte">
+  <h2>Convite & Suporte</h2>
+  <div class="buttons">
+    <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">Convidar o Bot</a>
+    <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">Servidor de Suporte</a>
+  </div>
+</section>
 
-  <section id="sugestoes">
-    <h2>Envie uma sugestão</h2>
-    <form class="form-sugestao" id="sugestaoForm">
-      <label for="nome">Seu nome</label>
-      <input type="text" id="nome" required>
+<section id="sugestoes">
+  <h2>Envie uma sugestão</h2>
+  <form class="form-sugestao" id="sugestaoForm">
+    <label for="nome">Seu nome</label>
+    <input type="text" id="nome" required>
 
-      <label for="mensagem">Sua sugestão</label>
-      <textarea id="mensagem" rows="5" required></textarea>
+    <label for="mensagem">Sua sugestão</label>
+    <textarea id="mensagem" rows="5" required></textarea>
 
-      <button type="submit" class="btn">Enviar</button>
-    </form>
-  </section>
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+</section>
 
-  <script>
-    const links = document.querySelectorAll("nav a");
-    const sections = document.querySelectorAll("section");
+<footer>
+  © 2025 Luminarls. Feito com 💖 por sua equipe.
+</footer>
 
-    function showSection(id) {
-      sections.forEach(section => {
-        section.classList.remove("active");
-      });
-      const target = document.querySelector(id);
-      if (target) {
-        target.classList.add("active");
-      }
-    }
+<script>
+  const links = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll("section");
 
-    links.forEach(link => {
-      link.addEventListener("click", function(e) {
-        e.preventDefault();
-        const id = this.getAttribute("href");
-        showSection(id);
-        history.pushState(null, null, id);
-      });
-    });
+  function showSection(id) {
+    sections.forEach(section => section.classList.remove("active"));
+    document.querySelector(id).classList.add("active");
+  }
 
-    document.getElementById("sugestaoForm").addEventListener("submit", function(e) {
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
       e.preventDefault();
-      const nome = document.getElementById("nome").value;
-      const mensagem = document.getElementById("mensagem").value;
-      const data = new Date().toLocaleString("pt-BR");
-
-      const payload = {
-        embeds: [{
-          title: "📩 Nova sugestão recebida!",
-          color: 0xd63384,
-          fields: [
-            {
-              name: "👤 Nome",
-              value: nome || "Não informado",
-              inline: true
-            },
-            {
-              name: "📅 Data",
-              value: data,
-              inline: true
-            },
-            {
-              name: "💡 Sugestão",
-              value: mensagem
-            }
-          ],
-          timestamp: new Date().toISOString(),
-          footer: {
-            text: "Sistema de sugestões - Luminarls"
-          }
-        }]
-      };
-
-      fetch("https://discord.com/api/webhooks/1360745762752958677/nVBLwZmOPcG0NtJFzotm-ONfTND1H57ct6FukppcRCo8mkzp1UkTN5sUb6YTVDySe6kF", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }).then(() => {
-        alert("Sugestão enviada com sucesso!");
-        this.reset();
-      }).catch(err => {
-        alert("Erro ao enviar sugestão.");
-        console.error(err);
-      });
+      const id = this.getAttribute("href");
+      showSection(id);
+      history.pushState(null, null, id);
     });
-  </script>
+  });
+
+  document.getElementById("sugestaoForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const nome = document.getElementById("nome").value;
+    const mensagem = document.getElementById("mensagem").value;
+    const data = new Date().toLocaleString("pt-BR");
+
+    const payload = {
+      embeds: [{
+        title: "📩 Nova sugestão recebida!",
+        color: 0xd63384,
+        fields: [
+          { name: "👤 Nome", value: nome || "Não informado", inline: true },
+          { name: "📅 Data", value: data, inline: true },
+          { name: "💡 Sugestão", value: mensagem }
+        ],
+        timestamp: new Date().toISOString(),
+        footer: { text: "Sistema de sugestões - Luminarls" }
+      }]
+    };
+
+    fetch("https://discord.com/api/webhooks/1360745762752958677/nVBLwZmOPcG0NtJFzotm-ONfTND1H57ct6FukppcRCo8mkzp1UkTN5sUb6YTVDySe6kF", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      alert("Sugestão enviada com sucesso!");
+      this.reset();
+    }).catch(err => {
+      alert("Erro ao enviar sugestão.");
+      console.error(err);
+    });
+  });
+</script>
 </body>
 </html>
