@@ -148,63 +148,60 @@
       transform: scale(1.1);
     }
 
-    /* --- MENU RESPONSIVO --- */
     @media (max-width: 600px) {
       nav {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: flex;
         flex-direction: column;
+        gap: 0.5rem;
         align-items: center;
-        gap: 0.7rem;
-        margin-top: 20px;
+        padding: 0.8rem;
       }
 
-      .mobile-nav a {
-        text-decoration: none;
-        color: #d63384;
-        font-weight: bold;
-        font-size: 1.05rem;
-        transition: color 0.3s;
+      nav a {
+        font-size: 0.95rem;
       }
 
-      .mobile-nav a:hover {
-        color: #bf2c76;
+      section {
+        padding: 80px 15px;
       }
-    }
 
-    @media (min-width: 601px) {
-      .mobile-nav {
-        display: none;
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .commands {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .form-sugestao input,
+      .form-sugestao textarea {
+        font-size: 0.95rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- MENU TRADICIONAL -->
-  <nav>
-    <a href="#home">Início</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#comandos">Comandos</a>
-    <a href="#suporte">Suporte</a>
-    <a href="#sugestoes">Sugestões</a>
-  </nav>
+  <!-- MENU ATUALIZADO -->
+<nav>
+  <a href="#home">Início</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#comandos">Comandos</a> <!-- Alterado aqui -->
+  <a href="#suporte">Suporte</a>
+  <a href="#sugestoes">Sugestões</a>
+</nav>
 
   <section id="home" class="active">
     <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png?format=webp&quality=lossless&width=667&height=667" alt="Avatar do bot Luminarls" class="bot-avatar">
     <h2>Luminarls</h2>
     <p>Um bot completo para seu servidor. Divertido, útil e fácil de usar!</p>
-
-    <!-- MENU MOBILE APARECE AQUI EM TELAS PEQUENAS -->
-    <div class="mobile-nav">
-      <a href="#home">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#comandos">Comandos</a>
-      <a href="#suporte">Suporte</a>
-      <a href="#sugestoes">Sugestões</a>
-    </div>
   </section>
 
   <section id="sobre">
@@ -213,7 +210,7 @@
   </section>
 
   <section id="comandos">
-    <h2>Comandos</h2>
+    <h2>Comandos</h2> <!-- Alterado aqui -->
     <div class="commands">
       <strong>Comandos principais:</strong><br>
       <code>!luzes</code><br>
@@ -242,14 +239,16 @@
     <form class="form-sugestao" id="sugestaoForm">
       <label for="nome">Seu nome</label>
       <input type="text" id="nome" required>
+
       <label for="mensagem">Sua sugestão</label>
       <textarea id="mensagem" rows="5" required></textarea>
+
       <button type="submit" class="btn">Enviar</button>
     </form>
   </section>
 
   <script>
-    const links = document.querySelectorAll("nav a, .mobile-nav a");
+    const links = document.querySelectorAll("nav a");
     const sections = document.querySelectorAll("section");
 
     function showSection(id) {
@@ -282,12 +281,25 @@
           title: "📩 Nova sugestão recebida!",
           color: 0xd63384,
           fields: [
-            { name: "👤 Nome", value: nome || "Não informado", inline: true },
-            { name: "📅 Data", value: data, inline: true },
-            { name: "💡 Sugestão", value: mensagem }
+            {
+              name: "👤 Nome",
+              value: nome || "Não informado",
+              inline: true
+            },
+            {
+              name: "📅 Data",
+              value: data,
+              inline: true
+            },
+            {
+              name: "💡 Sugestão",
+              value: mensagem
+            }
           ],
           timestamp: new Date().toISOString(),
-          footer: { text: "Sistema de sugestões - Luminarls" }
+          footer: {
+            text: "Sistema de sugestões - Luminarls"
+          }
         }]
       };
 
