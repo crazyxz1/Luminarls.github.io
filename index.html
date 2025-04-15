@@ -154,28 +154,6 @@
       font-size: 0.9rem;
       color: #888;
     }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .btn {
-        width: 90%;
-      }
-
-      section {
-        padding: 50px 20px;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -226,7 +204,7 @@
 <section id="sugestoes">
   <h2>Envie uma sugestão</h2>
   <form class="form-sugestao" id="sugestaoForm">
-    <label for="nome">Seu nome para identificação</label>
+    <label for="nome">Seu nome para identificação. </label>
     <input type="text" id="nome" required>
 
     <label for="mensagem">Sua sugestão</label>
@@ -269,9 +247,9 @@
         title: "📩 Nova sugestão recebida!",
         color: 0xd63384,
         fields: [
-          { name: "👤 Nome", value: nome || "Não informado", inline: true },
-          { name: "📅 Data", value: data, inline: true },
-          { name: "💡 Sugestão", value: mensagem }
+          { name: " Nome", value: nome || "Não informado", inline: true },
+          { name: " Data", value: data, inline: true },
+          { name: " Sugestão", value: mensagem }
         ],
         timestamp: new Date().toISOString(),
         footer: { text: "Sistema de sugestões - Luminarls" }
