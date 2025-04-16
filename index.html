@@ -8,8 +8,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Roboto', sans-serif;
@@ -89,7 +96,6 @@
       gap: 1rem;
       align-items: center;
       animation: fadeInButtons 1s ease-out;
-      margin-top: 2rem; /* Para garantir que os botões não fiquem colados ao avatar */
     }
 
     .btn {
@@ -133,25 +139,6 @@
       font-size: 1rem;
     }
 
-    .form-sugestao button {
-      width: 100%;
-      max-width: 100%; /* Garante que o botão tenha a largura do container */
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #d63384;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-      text-decoration: none;
-      text-align: center;
-    }
-
-    .form-sugestao button:hover {
-      background-color: #bf2c76;
-    }
-
     .bot-avatar {
       width: 120px;
       height: 120px;
@@ -174,107 +161,50 @@
       animation: fadeInFooter 1s ease-out;
     }
 
-    .status-sucesso {
-      margin-top: 1rem;
-      font-weight: bold;
-      color: green;
-      background: #e0f8e9;
-      padding: 0.75rem 1rem;
-      border: 2px solid #4caf50;
-      border-radius: 6px;
-      text-align: center;
-      display: none;
-    }
-
-    .status-erro {
-      margin-top: 1rem;
-      font-weight: bold;
-      color: #c62828;
-      background: #fdecea;
-      padding: 0.75rem 1rem;
-      border: 2px solid #e53935;
-      border-radius: 6px;
-      text-align: center;
-      display: none;
-    }
-
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
 
     @keyframes fadeInSection {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
 
     @keyframes fadeInButtons {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes scaleIn {
-      0% { transform: scale(0.8); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(0.8);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
     @keyframes fadeInFooter {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      nav {
-        justify-content: center;
+      0% {
+        opacity: 0;
       }
-
-      .btn {
-        font-size: 0.9rem;
-        padding: 0.8rem 1.5rem;
-      }
-
-      .form-sugestao label {
-        font-size: 1rem;
-      }
-
-      .form-sugestao input,
-      .form-sugestao textarea {
-        font-size: 0.95rem;
-      }
-
-      .buttons {
-        margin-top: 1.5rem; /* Ajusta a posição dos botões em telas pequenas */
-      }
-
-      .bot-avatar {
-        margin-bottom: 20px; /* Garante mais espaço entre o avatar e os botões */
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        font-size: 0.8rem;
-        padding: 0.6rem 1.2rem;
-      }
-
-      .form-sugestao input,
-      .form-sugestao textarea {
-        font-size: 0.9rem;
-      }
-
-      .buttons {
-        margin-top: 1rem; /* Ajusta a margem ainda mais em telas menores */
-      }
-
-      .bot-avatar {
-        width: 100px;
-        height: 100px;
+      100% {
+        opacity: 1;
       }
     }
   </style>
@@ -292,10 +222,6 @@
   <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png" class="bot-avatar" />
   <h2>Luminarls</h2>
   <p>Transforme seu servidor com um bot incrível! Funcional, interativo e feito para divertir!</p>
-  <div class="buttons">
-    <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">Convidar o Bot</a>
-    <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">Servidor de Suporte</a>
-  </div>
 </section>
 
 <section id="sobre">
@@ -331,14 +257,13 @@
 <section id="sugestoes">
   <h2>Envie uma sugestão</h2>
   <form class="form-sugestao" id="sugestaoForm">
-    <label for="nome">Seu nome para identificação:</label>
-    <input type="text" id="nome" name="nome" required>
-    
-    <label for="mensagem">Sua sugestão:</label>
-    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-    
+    <label for="nome">Seu nome para identificação. </label>
+    <input type="text" id="nome" required>
+
+    <label for="mensagem">Sua sugestão</label>
+    <textarea id="mensagem" rows="5" required></textarea>
+
     <button type="submit" class="btn">Enviar</button>
-    <p id="statusMensagem" class="status-sucesso"></p>
   </form>
 </section>
 
@@ -352,8 +277,7 @@
 
   function showSection(id) {
     sections.forEach(section => section.classList.remove("active"));
-    const sectionToShow = document.querySelector(id);
-    if (sectionToShow) sectionToShow.classList.add("active");
+    document.querySelector(id).classList.add("active");
   }
 
   links.forEach(link => {
@@ -367,21 +291,18 @@
 
   document.getElementById("sugestaoForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    const nome = document.getElementById("nome").value.trim();
-    const mensagem = document.getElementById("mensagem").value.trim();
+    const nome = document.getElementById("nome").value;
+    const mensagem = document.getElementById("mensagem").value;
     const data = new Date().toLocaleString("pt-BR");
-    const status = document.getElementById("statusMensagem");
-
-    if (!mensagem) return;
 
     const payload = {
       embeds: [{
         title: "📩 Nova sugestão recebida!",
         color: 0xd63384,
         fields: [
-          { name: "Nome", value: nome || "Não informado", inline: true },
-          { name: "Data", value: data, inline: true },
-          { name: "Sugestão", value: mensagem }
+          { name: " Nome", value: nome || "Não informado", inline: true },
+          { name: " Data", value: data, inline: true },
+          { name: " Sugestão", value: mensagem }
         ],
         timestamp: new Date().toISOString(),
         footer: { text: "Sistema de sugestões - Luminarls" }
@@ -392,20 +313,12 @@
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
-    })
-    .then(response => {
-      if (response.ok) {
-        status.textContent = "Sua sugestão foi enviada com sucesso!";
-        status.style.display = "block";
-      } else {
-        status.textContent = "Ocorreu um erro ao enviar sua sugestão.";
-        status.style.display = "block";
-      }
-    })
-    .catch(error => {
-      console.error("Erro ao enviar sugestão:", error);
-      status.textContent = "Erro ao enviar sugestão. Tente novamente mais tarde.";
-      status.style.display = "block";
+    }).then(() => {
+      alert("Sugestão enviada com sucesso!");
+      this.reset();
+    }).catch(err => {
+      alert("Erro ao enviar sugestão.");
+      console.error(err);
     });
   });
 </script>
