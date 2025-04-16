@@ -161,6 +161,12 @@
       animation: fadeInFooter 1s ease-out;
     }
 
+    .success-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -280,6 +286,7 @@
 
     <button type="submit" class="btn">Enviar</button>
   </form>
+  <p id="successMessage" class="success-message" style="display: none;">Sugestão enviada com sucesso!</p>
 </section>
 
 <footer>
@@ -329,7 +336,7 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     }).then(() => {
-      alert("enviada com sucesso!");
+      document.getElementById("successMessage").style.display = "block";
       this.reset();
     }).catch(err => {
       alert("Erro ao enviar sugestão.");
