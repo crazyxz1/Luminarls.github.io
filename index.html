@@ -272,28 +272,16 @@
 </footer>
 
 <script>
-  const links = document.querySelectorAll("nav a");
-  const sections = document.querySelectorAll("section");
-
-  function showSection(id) {
-    sections.forEach(section => section.classList.remove("active"));
-    document.querySelector(id).classList.add("active");
-  }
-
-  links.forEach(link => {
-    link.addEventListener("click", function(e) {
-      e.preventDefault();
-      const id = this.getAttribute("href");
-      showSection(id);
-      history.pushState(null, null, id);
-    });
-  });
-
   document.getElementById("sugestaoForm").addEventListener("submit", function(e) {
     e.preventDefault();
     const nome = document.getElementById("nome").value;
     const mensagem = document.getElementById("mensagem").value;
     const data = new Date().toLocaleString("pt-BR");
+    const submitButton = this.querySelector('button[type="submit"]');
+
+    // Desabilita o botão e altera o texto para "Enviando..."
+    submitButton.disabled = true;
+    submitButton.textContent = "Enviando...";
 
     const payload = {
       embeds: [{
@@ -314,11 +302,17 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     }).then(() => {
+      // Mensagem de sucesso
       alert("Sugestão enviada com sucesso!");
       this.reset();
+      submitButton.disabled = false;
+      submitButton.textContent = "Enviar"; // Retorna o texto original do botão
     }).catch(err => {
+      // Mensagem de erro
       alert("Erro ao enviar sugestão.");
       console.error(err);
+      submitButton.disabled = false;
+      submitButton.textContent = "Enviar"; // Retorna o texto original do botão
     });
   });
 </script>
