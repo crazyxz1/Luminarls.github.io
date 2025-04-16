@@ -252,10 +252,12 @@
 <section id="sugestoes">
   <h2>Envie uma sugestão</h2>
   <form class="form-sugestao" id="sugestaoForm">
-    <label for="nome">Seu nome para identificação. </label>
-    <input type="text" id="nome" required>
-    <label for="mensagem">Sua sugestão</label>
-    <textarea id="mensagem" rows="5" required></textarea>
+    <label for="nome">Seu nome para identificação:</label>
+    <input type="text" id="nome" name="nome" required>
+    
+    <label for="mensagem">Sua sugestão:</label>
+    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+    
     <button type="submit" class="btn">Enviar</button>
     <p id="statusMensagem" class="status-sucesso"></p>
   </form>
@@ -271,7 +273,8 @@
 
   function showSection(id) {
     sections.forEach(section => section.classList.remove("active"));
-    document.querySelector(id).classList.add("active");
+    const sectionToShow = document.querySelector(id);
+    if (sectionToShow) sectionToShow.classList.add("active");
   }
 
   links.forEach(link => {
@@ -285,19 +288,21 @@
 
   document.getElementById("sugestaoForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    const nome = document.getElementById("nome").value;
-    const mensagem = document.getElementById("mensagem").value;
+    const nome = document.getElementById("nome").value.trim();
+    const mensagem = document.getElementById("mensagem").value.trim();
     const data = new Date().toLocaleString("pt-BR");
     const status = document.getElementById("statusMensagem");
+
+    if (!mensagem) return;
 
     const payload = {
       embeds: [{
         title: "📩 Nova sugestão recebida!",
         color: 0xd63384,
         fields: [
-          { name: " Nome", value: nome || "Não informado", inline: true },
-          { name: " Data", value: data, inline: true },
-          { name: " Sugestão", value: mensagem }
+          { name: "Nome", value: nome || "Não informado", inline: true },
+          { name: "Data", value: data, inline: true },
+          { name: "Sugestão", value: mensagem }
         ],
         timestamp: new Date().toISOString(),
         footer: { text: "Sistema de sugestões - Luminarls" }
@@ -312,7 +317,7 @@
       status.textContent = "Enviado com sucesso!";
       status.className = "status-sucesso";
       status.style.display = "block";
-      this.reset();
+      document.getElementById("sugestaoForm").reset();
     }).catch(err => {
       status.textContent = "Erro ao enviar sugestão. Tente novamente.";
       status.className = "status-erro";
