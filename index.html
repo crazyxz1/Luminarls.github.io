@@ -89,6 +89,7 @@
       gap: 1rem;
       align-items: center;
       animation: fadeInButtons 1s ease-out;
+      margin-top: 2rem; /* Para garantir que os botões não fiquem colados ao avatar */
     }
 
     .btn {
@@ -241,6 +242,10 @@
       .form-sugestao textarea {
         font-size: 0.95rem;
       }
+
+      .buttons {
+        margin-top: 1.5rem; /* Diminui o espaço entre o avatar e os botões em telas menores */
+      }
     }
 
     @media (max-width: 480px) {
@@ -258,6 +263,10 @@
       .form-sugestao textarea {
         font-size: 0.9rem;
       }
+
+      .buttons {
+        margin-top: 1rem; /* Ajusta ainda mais o espaçamento dos botões */
+      }
     }
   </style>
 </head>
@@ -274,6 +283,10 @@
   <img src="https://images-ext-1.discordapp.net/external/pZUUXwgCHC4ITloQE3FSYtn4cm6zpsR2eyfPE_peVkw/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1351585153209597992/ba0b07915b2ec21f2703a91a7cb0c45e.png" class="bot-avatar" />
   <h2>Luminarls</h2>
   <p>Transforme seu servidor com um bot incrível! Funcional, interativo e feito para divertir!</p>
+  <div class="buttons">
+    <a href="https://discord.com/oauth2/authorize?client_id=1351585153209597992&permissions=2684439575&integration_type=0&scope=bot" class="btn" target="_blank">Convidar o Bot</a>
+    <a href="https://discord.gg/XnuTBECY99" class="btn" target="_blank">Servidor de Suporte</a>
+  </div>
 </section>
 
 <section id="sobre">
