@@ -589,11 +589,18 @@
     const data = new Date().toLocaleString("pt-BR");
     const status = document.getElementById("statusMensagem");
 
-    const nomesInvalidos = ["anonimo", "anônimo", "teste", "123", "abc", "nome"];
     const palavrasProibidas = [
-      "idiota", "burro", "otario", "otário", "fdp", "merda", "bosta",
-      "desgraça", "viado", "porra", "caralho", "cu", "cacete", "pqp", "lixo"
-    ];
+  "idiota", "burro", "otario", "otário", "fdp", "merda", "bosta",
+  "desgraça", "viado", "porra", "caralho", "cu", "cacete", "pqp", "lixo",
+  "gozei", "gozar", "buceta", "puta", "puto", "foda", "fodase", "foda-se",
+  "pau", "rola", "pinto", "boquete", "anal", "sexo", "safado", "safada",
+  "vsf", "vai se foder", "vai tomar no cu", "vtnc", "krl", "krll", "carai",
+  "penis", "vagina", "arrombado", "arrombada", "escroto", "escrota",
+  "babaca", "retardado", "retardada", "mongol", "corno", "corna", "chupa",
+  "xereca", "xota", "xana", "testiculo", "testículo", "mamilo", "mamilos",
+  "transar", "comer", "trepar", "siririca", "punheta", "ejacular", "orgasmo",
+  "gozo", "gemer", "gemido", "pelada", "nude", "nudes"
+];
 
     function contemPalavraProibida(texto) {
       return palavrasProibidas.some(p => texto.toLowerCase().includes(p));
