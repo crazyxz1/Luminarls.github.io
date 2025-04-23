@@ -268,13 +268,35 @@
         <p>A Luminarls foi criada em 20 de janeiro de 2025.</p>
       </div>
     </div>
-    <!-- Pergunta 2 -->
     <div class="faq-item">
       <button class="faq-question">Quanto tempo levou para fazer Luminarls?</button>
       <div class="faq-answer">
-        <p>O desenvolvimento inicial levou 3 meses e 1 dia.</p>
+        <p>O desenvolvimento inicial levou <span id="tempoRealLuminarls"></span>.</p>
       </div>
     </div>
+    
+    <script>
+      function calcularTempoDesenvolvimento(dataInicial) {
+        const inicio = new Date(dataInicial);
+        const agora = new Date();
+    
+        const diffMs = agora - inicio;
+        const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const anos = Math.floor(diffDias / 365);
+        const meses = Math.floor((diffDias % 365) / 30);
+        const dias = diffDias % 30;
+    
+        let resultado = '';
+        if (anos > 0) resultado += `${anos} ano${anos > 1 ? 's' : ''}, `;
+        if (meses > 0) resultado += `${meses} mês${meses > 1 ? 'es' : ''}, `;
+        resultado += `${dias} dia${dias !== 1 ? 's' : ''}`;
+    
+        return resultado;
+      }
+    
+      document.getElementById("tempoRealLuminarls").textContent = calcularTempoDesenvolvimento("2024-01-21");
+    </script>
+
     <!-- Pergunta 3 -->
     <div class="faq-item">
       <button class="faq-question">Haverá alguma atualização em breve?</button>
@@ -539,7 +561,7 @@
     }
   </style>
 
-  <h2>Contribua com melhorias</h2>
+  <h2>Envie uma sugestão</h2>
   <form class="form-sugestao" id="sugestaoForm">
     <label for="nome">Seu nome para identificação.</label>
     <input type="text" id="nome" maxlength="30" required placeholder="Ex: Fulano de Tal">
@@ -589,30 +611,14 @@
     const data = new Date().toLocaleString("pt-BR");
     const status = document.getElementById("statusMensagem");
 
-    const palavrasProibidas = [ /* sua lista aqui */ ];
-
-    const nomesInvalidos = [
-      "anonimo", "anônimo", "admin", "moderador", "dono", "user", "usuário", 
-      "nome", "ninguém", "semnome", "unknown", "test", "bot"
+    const nomesInvalidos = ["anonimo", "anônimo", "teste", "123", "abc", "nome"];
+    const palavrasProibidas = [
+      "idiota", "burro", "otario", "otário", "fdp", "merda", "bosta",
+      "desgraça", "viado", "porra", "caralho", "cu", "cacete", "pqp", "lixo"
     ];
 
     function contemPalavraProibida(texto) {
       return palavrasProibidas.some(p => texto.toLowerCase().includes(p));
-    }
-
-    function contemLink(texto) {
-      const padraoLink = /(https?:\/\/|www\.|discord\.gg\/|discord\.com\/invite\/)/i;
-      return padraoLink.test(texto);
-    }
-
-    function nomeSuspeito(texto) {
-      const padraoNome = /@|#|[0-9]{4}$/i;
-      return padraoNome.test(texto);
-    }
-
-    function contemMencaoGlobal(texto) {
-      const padraoMencao = /@?everyone|@?here|<@!?[0-9]+>/i;
-      return padraoMencao.test(texto.toLowerCase());
     }
 
     if (!nome || !mensagem) {
@@ -622,19 +628,15 @@
       return;
     }
 
-    if (nome.length < 3 || nomesInvalidos.includes(nome.toLowerCase()) || nomeSuspeito(nome)) {
+    if (nome.length < 3 || nomesInvalidos.includes(nome.toLowerCase())) {
       status.textContent = "⚠️ Por favor, insira um nome válido.";
       status.className = "status-erro";
       status.style.display = "block";
       return;
     }
 
-    if (
-      contemPalavraProibida(nome) || contemPalavraProibida(mensagem) ||
-      contemLink(nome) || contemLink(mensagem) ||
-      contemMencaoGlobal(nome) || contemMencaoGlobal(mensagem)
-    ) {
-      status.textContent = "🚫 Conteúdo ofensivo ou menção não permitida detectada!";
+    if (contemPalavraProibida(nome) || contemPalavraProibida(mensagem)) {
+      status.textContent = "🚫 Conteúdo ofensivo detectado. Seja respeitoso!";
       status.className = "status-erro";
       status.style.display = "block";
       return;
@@ -654,7 +656,7 @@
       }]
     };
 
-    fetch("https://discord.com/api/webhooks/1364707382285959210/I7IJHOoBaH_zDV3ojM87ReDz9W8L7voDxhOYHAwT6sgzIQipfm0Tbp7XMsngJ2U5eukI", {
+    fetch("https://discord.com/api/webhooks/1360745762752958677/nVBLwZmOPcG0NtJFzotm-ONfTND1H57ct6FukppcRCo8mkzp1UkTN5sUb6YTVDySe6kF", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
