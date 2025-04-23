@@ -611,71 +611,96 @@
     const data = new Date().toLocaleString("pt-BR");
     const status = document.getElementById("statusMensagem");
 
-    const nomesInvalidos = [
-      "anonimo", "anônimo", "teste", "123", "vgbd", "nome", "gozei", "anunciante", "jose", "fake", "admin", "root", "support", 
-      "bot", "test", "12345", "admin1", "testando", "sistema", "padrão", "novato", "branco", "criado", "logado", "convidado", 
-      "config", "modelo", "monitor", "anon", "newuser", "superuser", "tentei", "testeteste", "master", "debug", "default", 
-      "defaultuser", "inválido", "vazio", "null", "nulo", "geral", "principal", "convidado1", "guest", "testuser", "jhonny", 
-      "random", "convidado123", "temporal", "aberto", "erro", "generico", "falso", "desconhecido", "automático", "george", 
-      "junior", "dev", "anonymous", "script", "fakeuser", "xyz", "programador", "desenvolvedor", "administrador", "rootuser", 
-      "botmaster", "testaccount", "notfound", "invalido", "lixo", "testador", "testando1", "newaccount", "erro404", "unknown", 
-      "user123", "nomesystem", "padrão1", "erro123", "comum", "usuario1", "newuser1", "default123", "tomei", "teu", "nulluser", 
-      "semnome", "erro_usuario", "inválido123", "teste123", "bot123"
-    ];
-
+    const nomesInvalidos = ["anonimo", "anônimo", "teste", "123", "abc", "nome"];
     const palavrasProibidas = [
-      "GUA", "AnimaldeTeta", "Arrombado", "asshole", "avsfd", "BABA-OVO", "Babaca", "BICHA", "bitch", "bixa", "BIXA",
-      "BOAZUDA", "BOCETA", "BOCO", "BOIOLA", "bolagato", "BOLAGATO", "BOLCAT", "BOQUETE", "Boqueteiro", "BOSTANA", "BRIOCO",
-      "BRONHA", "BUCA", "Buceta", "BUNDA", "Bundao", "BUNDUDA", "burra dms", "Cabaco", "cacetadas", "Cacete", "Cadelona",
-      "Cafona", "cala a boca", "cala boca", "Cambista", "CANALHA", "Capiroto", "Caralho", "CARALHO", "CASSETA", "CASSETE",
-      "chato pra um", "CHECHECA", "CHERECA", "CHIBUMBA", "CHIBUMBO", "CHIFRUDA", "CHIFRUDO", "ching chong", "chink", "CHOCHOTA",
-      "chong", "CHOTA", "CHUPADA", "CHUPADO", "clb", "Clbc", "CLITRIS", "CLITORIS", "COCA-NA", "COCAINA", "Cocodrilo", "Cocozento",
-      "coon", "CORNA", "CORNO", "CORNUDA", "CORNUDO", "CORRUPTA", "CORRUPTO", "Cpt", "CRETINA", "CRETINO", "crlh", "CRUZ-CREDO",
-      "cu", "cuck", "CULHAO", "CUNT", "CURALHO", "CUZAO", "cuzona", "DEBIL", "DebilMental", "DEBILOIDE", "DEFUNTO", "DEM+NIO",
-      "Demente", "DEMONIO", "Desciclope", "Desgracado", "DIFUNTO", "Drogado", "EGUENORANTE", "eh burro", "Endemoniado", "Energumeno",
-      "Enfianocu", "EngoleRola", "Escrota", "ESCROTA", "Escroto", "ESCROTO", "Escroto", "Esdruxulo", "ESPORRADA", "Esporrado",
-      "ESPORRADO", "ESPORRO", "ESTPIDA", "ESTPIDO", "Estigalhado", "Estrume", "Estrunxado", "ESTUPIDA", "ESTUPIDEZ", "Estupido",
-      "ESTUPIDO", "fag", "faggot", "FDP", "fds", "fds pra sua opiniao", "FEDIDA", "FEDIDO", "FEIDOSO", "FELAÇAO", "Felacao", "Ferre se",
-      "ffs", "fg0t", "fgot", "Fidumaegua", "filho de uma puta", "FilhodaPuta", "Fiofo", "FODAO", "Foda", "FODA", "foda-se", "FUCK",
-      "𝖋𝖖𝖒", "FUCKLQBTQ", "Fuder", "Fudido", "Fulera", "FURONHA", "FURNICA", "FURNICAR", "GAIATA", "GAIATO", "GeisyArruda",
-      "Gnu", "GONORREA", "Gonorreia", "GONORREIA", "GordoEscroto", "Gozado", "GRELINHO", "GRELO", "grupo merda", "Herege", "Hitler",
-      "horrenda", "Idiota", "IDIOTA", "IDIOTICE", "Imbecil", "IMBECIL", "Inascivel", "Invertebrado", "ISCROTA", "ISCROTO", "Jacu",
-      "jap", "KCT", "kike", "Komodo", "Ku", "kys", "L+SBICA", "LADR+O", "LADROEIRA", "LADRONA", "LALAU", "lazarento", "Lazaro",
-      "LEPROSA", "Leproso", "LEPROSO", "Lezado", "lico", "Limpezaanal", "MACHONA", "MACHORRA", "MANGUA", "MANGUACA", "MariMoon",
-      "MASTURBA", "membro random", "Meretriz", "MiolodeCu", "Mocorongo", "MOCR+A", "MOCREA", "MOCREIA", "MOLECA", "MONDRONGA",
-      "MONDRONGO", "mongoloid", "MontedeMerda", "Morfetico", "motherfucker", "Mulambo", "n1bb", "n1gg", "NABA", "NADEGA", "Nazi",
-      "Nazista", "negro", "n*g", "Nhaca", "nibb", "nigg", "ninguem te quer", "ninguem te quer nesse servidor", "no teu ouvido", "Nonsense",
-      "Olhodocu", "OlhoGordo", "OLHOTA", "OT-RIA", "OT-RIO", "otalio", "OTARIA", "Otario", "OTARIO", "P+STULA", "Panaca", "PASPALHA",
-      "PASPALHAO", "PASPALHO", "Passaralho", "PauNoCu", "pedo", "PEIA", "PEMBA", "penis", "PENTELHA", "PENTELHO", "PER", "Periquita",
-      "PIC+O", "PICAO", "Pimenteira", "PIRANHA", "PIROCA", "PIROCO", "PIRU", "porra", "Porra", "pqp", "PROST-BULO", "PROSTIBULO",
-      "prostituta", "PROSTITUTA", "PROSTITUTO", "Punheta", "PUS", "PUSTULA", "Puta", "PUTA", "PutaQuePariu", "Quasimodo", "Quenga",
-      "Quirguistao", "r3t4r", "r3tar", "RABO", "RABAO", "RABUDA", "RABUDAO", "RABUDO", "RABUDONA", "RACHADAO", "Rapariga", "Rapariga",
-      "ret4r", "retard", "RETARDADA", "RETARDADO", "RID-CULA", "RIDICULA", "Rusguento", "S-FILIS", "SAFADO", "Sanguesuga", "SAPATO",
-      "seu burro", "seu piranha", "seu puta", "seu random", "shemale", "SIFILIS", "SIRIRICA", "slut", "spic", "stfu", "sua piranha",
-      "sua puta", "Tapado", "Taporra", "TARADA", "Tarado", "TESTUDA", "Tetuda", "Tetudo", "TEZAO", "TEZUDA", "this server is sucks",
-      "Tmnc", "tnc", "Tosco", "Tragado", "Trepadeira", "TROCHA", "Troglodita", "TROLHA", "Troucha", "TROUCHA", "TROUXA", "twat",
-      "vadia", "Vadia", "VAGABUNDA", "Vagabundo", "VAGABUNDO", "Vagaranha", "VAGINA", "vai tomar no cu", "Vaiamerda", "vaisefuder",
-      "Vaitomarnocu", "VIGARISTA", "VINGANCA", "VIRA-LATA", "VIRGEM", "VIRGO", "virgula", "VITIMA", "volta pro seu cu", "VÓMITO",
-      "YOB2h", "zero", "zorra", "zorrera", "zona"
+      "idiota", "burro", "otario", "otário", "fdp", "merda", "bosta",
+      "desgraça", "viado", "porra", "caralho", "cu", "cacete", "pqp", "lixo",
+      "everyone", "@everyone"
     ];
-
-    // Função para criar uma regex segura para a lista de palavras proibidas
-    function gerarRegex(palavras) {
-      return new RegExp(palavras.map(palavra => palavra.replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&")).join("|"), "i");
-    }
 
     function contemPalavraProibida(texto) {
-      const regex = gerarRegex(palavrasProibidas);
-      return regex.test(texto);
+      return palavrasProibidas.some(p => texto.toLowerCase().includes(p));
     }
 
-    if (nomesInvalidos.includes(nome.toLowerCase()) || contemPalavraProibida(nome) || contemPalavraProibida(mensagem)) {
-      status.textContent = "Nome ou mensagem contém palavras proibidas!";
-      status.style.color = "red";
-    } else {
-      status.textContent = "Mensagem enviada com sucesso!";
-      status.style.color = "green";
+    function contemPrefixoProibido(texto) {
+      return texto.toLowerCase().split(/\s+/).some(p => p.startsWith("go") || p.startsWith("pu"));
     }
+
+    function contemLinkSuspeito(texto) {
+      const padroesSuspeitos = [
+        /bit\.ly/i, /tinyurl\.com/i, /t\.co/i, /goo\.gl/i, /grabify\.link/i,
+        /discord(app)?\.com\/gift/i, /free\-nitro/i, /gift\-nitro/i, /nitro\-gratis/i,
+        /rebrand\.ly/i, /lnk\.co/i, /suslink/i
+      ];
+      return padroesSuspeitos.some(regex => regex.test(texto));
+    }
+
+    function transformarLinks(texto) {
+      return texto.replace(/(https?:\/\/[^\s]+)/g, url => `[Clique aqui](${url})`);
+    }
+
+    // Validações
+    if (!nome || !mensagem) {
+      status.textContent = "⚠️ Por favor, preencha todos os campos antes de enviar.";
+      status.className = "status-erro";
+      status.style.display = "block";
+      return;
+    }
+
+    if (nome.length < 3 || nomesInvalidos.includes(nome.toLowerCase())) {
+      status.textContent = "⚠️ Por favor, insira um nome válido.";
+      status.className = "status-erro";
+      status.style.display = "block";
+      return;
+    }
+
+    if (
+      contemPalavraProibida(nome) || contemPalavraProibida(mensagem) ||
+      contemPrefixoProibido(nome) || contemPrefixoProibido(mensagem) ||
+      contemLinkSuspeito(mensagem)
+    ) {
+      status.textContent = "🚫 Detecção de conteúdo impróprio ou link suspeito. Remova-o para continuar.";
+      status.className = "status-erro";
+      status.style.display = "block";
+      return;
+    }
+
+    const mensagemComLinks = transformarLinks(mensagem);
+
+    const payload = {
+      embeds: [{
+        title: "📩 Nova sugestão recebida!",
+        color: 0xd63384,
+        fields: [
+          { name: " Nome", value: nome, inline: true },
+          { name: " Data", value: data, inline: true },
+          { name: " Sugestão", value: mensagemComLinks }
+        ],
+        timestamp: new Date().toISOString(),
+        footer: { text: "Sistema de sugestões - Luminarls" }
+      }]
+    };
+
+    fetch("https://discord.com/api/webhooks/1364707382285959210/I7IJHOoBaH_zDV3ojM87ReDz9W8L7voDxhOYHAwT6sgzIQipfm0Tbp7XMsngJ2U5eukI", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      status.textContent = "✅ Enviado com sucesso!";
+      status.className = "status-sucesso";
+      status.style.display = "block";
+      this.reset();
+      contador.textContent = "0";
+    }).catch(err => {
+      status.textContent = "❌ Erro ao enviar sugestão. Tente novamente.";
+      status.className = "status-erro";
+      status.style.display = "block";
+      console.error(err);
+    }).finally(() => {
+      setTimeout(() => {
+        status.style.display = "none";
+      }, 4000);
+    });
   });
 </script>
 </body>
