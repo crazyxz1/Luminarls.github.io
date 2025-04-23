@@ -606,13 +606,13 @@
     }
 
     function nomeSuspeito(texto) {
-      const padraoNome = /@|#|[0-9]{4}$/i; // Detecta @menções ou nomes com #0000
+      const padraoNome = /@|#|[0-9]{4}$/i;
       return padraoNome.test(texto);
     }
 
     function contemMencaoGlobal(texto) {
-      const padraoMencao = /@everyone|@here|<@!?[0-9]+>/i;
-      return padraoMencao.test(texto);
+      const padraoMencao = /@?everyone|@?here|<@!?[0-9]+>/i;
+      return padraoMencao.test(texto.toLowerCase());
     }
 
     if (!nome || !mensagem) {
