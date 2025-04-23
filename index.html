@@ -589,21 +589,30 @@
     const data = new Date().toLocaleString("pt-BR");
     const status = document.getElementById("statusMensagem");
 
-    const palavrasProibidas = [
-  "idiota", "burro", "otario", "otário", "fdp", "merda", "bosta",
-  "desgraça", "viado", "porra", "caralho", "cu", "cacete", "pqp", "lixo",
-  "gozei", "gozar", "buceta", "puta", "puto", "foda", "fodase", "foda-se",
-  "pau", "rola", "pinto", "boquete", "anal", "sexo", "safado", "safada",
-  "vsf", "vai se foder", "vai tomar no cu", "vtnc", "krl", "krll", "carai",
-  "penis", "vagina", "arrombado", "arrombada", "escroto", "escrota",
-  "babaca", "retardado", "retardada", "mongol", "corno", "corna", "chupa",
-  "xereca", "xota", "xana", "testiculo", "testículo", "mamilo", "mamilos",
-  "transar", "comer", "trepar", "siririca", "punheta", "ejacular", "orgasmo",
-  "gozo", "gemer", "gemido", "pelada", "nude", "nudes"
-];
+    const palavrasProibidas = [ /* sua lista aqui */ ];
+
+    const nomesInvalidos = [
+      "anonimo", "anônimo", "admin", "moderador", "dono", "user", "usuário", 
+      "nome", "ninguém", "semnome", "unknown", "test", "bot"
+    ];
 
     function contemPalavraProibida(texto) {
       return palavrasProibidas.some(p => texto.toLowerCase().includes(p));
+    }
+
+    function contemLink(texto) {
+      const padraoLink = /(https?:\/\/|www\.|discord\.gg\/|discord\.com\/invite\/)/i;
+      return padraoLink.test(texto);
+    }
+
+    function nomeSuspeito(texto) {
+      const padraoNome = /@|#|[0-9]{4}$/i; // Detecta @menções ou nomes com #0000
+      return padraoNome.test(texto);
+    }
+
+    function contemMencaoGlobal(texto) {
+      const padraoMencao = /@everyone|@here|<@!?[0-9]+>/i;
+      return padraoMencao.test(texto);
     }
 
     if (!nome || !mensagem) {
@@ -613,15 +622,19 @@
       return;
     }
 
-    if (nome.length < 3 || nomesInvalidos.includes(nome.toLowerCase())) {
+    if (nome.length < 3 || nomesInvalidos.includes(nome.toLowerCase()) || nomeSuspeito(nome)) {
       status.textContent = "⚠️ Por favor, insira um nome válido.";
       status.className = "status-erro";
       status.style.display = "block";
       return;
     }
 
-    if (contemPalavraProibida(nome) || contemPalavraProibida(mensagem)) {
-      status.textContent = "🚫 Conteúdo ofensivo detectado. Seja respeitoso!";
+    if (
+      contemPalavraProibida(nome) || contemPalavraProibida(mensagem) ||
+      contemLink(nome) || contemLink(mensagem) ||
+      contemMencaoGlobal(nome) || contemMencaoGlobal(mensagem)
+    ) {
+      status.textContent = "🚫 Conteúdo ofensivo ou menção não permitida detectada!";
       status.className = "status-erro";
       status.style.display = "block";
       return;
