@@ -621,7 +621,6 @@
       return palavrasProibidas.some(p => texto.toLowerCase().includes(p));
     }
 
-    // Validação dos campos
     if (!nome || !mensagem) {
       status.textContent = "⚠️ Por favor, preencha todos os campos antes de enviar.";
       status.className = "status-erro";
@@ -643,7 +642,6 @@
       return;
     }
 
-    // Envio do conteúdo para o webhook do Discord
     const payload = {
       embeds: [{
         title: "📩 Nova sugestão recebida!",
@@ -658,7 +656,6 @@
       }]
     };
 
-    // Enviando a sugestão via Webhook
     fetch("https://discord.com/api/webhooks/1360745762752958677/nVBLwZmOPcG0NtJFzotm-ONfTND1H57ct6FukppcRCo8mkzp1UkTN5sUb6YTVDySe6kF", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
