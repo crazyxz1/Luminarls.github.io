@@ -629,8 +629,9 @@
     function contemLinkSuspeito(texto) {
       const padroesSuspeitos = [
         /bit\.ly/i, /tinyurl\.com/i, /t\.co/i, /goo\.gl/i, /grabify\.link/i,
-        /discord(app)?\.com\/gift/i, /free\-nitro/i, /gift\-nitro/i, /nitro\-gratis/i,
-        /rebrand\.ly/i, /lnk\.co/i, /suslink/i
+        /discord\.gg/i, /discord\.com/i, // Bloqueia qualquer link do Discord
+        /free\-nitro/i, /gift\-nitro/i, /nitro\-gratis/i, /rebrand\.ly/i,
+        /lnk\.co/i, /suslink/i, /discord(app)?\.com\/gift/i
       ];
       return padroesSuspeitos.some(regex => regex.test(texto));
     }
