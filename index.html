@@ -254,7 +254,7 @@
          alt="Foto do Criador" class="creator-avatar">
     <div class="creator-info">
       <p>
-        Olá! Me chamo <strong>crazyxz</strong> e sou o desenvolvedor do bot <strong>Luminarls</strong>. Sempre tive o desejo de me tornar um desenvolvedor, e essa vontade me inspirou a criar um bot público. A Luminarls nasceu com o objetivo de tornar os servidores do Discord mais organizados, interativos e funcionais, oferecendo uma experiência completa para as comunidades.
+        Olá! Meu nome é <strong>crazyxz</strong> e sou o desenvolvedor do bot <strong>Luminarls</strong>. Sempre tive o desejo de me tornar um programador, e essa vontade me inspirou a criar um bot público. O Luminarls nasceu com o objetivo de tornar os servidores do Discord mais organizados, interativos e funcionais, oferecendo uma experiência completa para as comunidades.
       </p>
     </div>
   </div>
@@ -265,9 +265,10 @@
     <div class="faq-item">
       <button class="faq-question">Quando o Luminarls foi criado?</button>
       <div class="faq-answer">
-        <p>O Luminarls foi criado em 20 de janeiro de 2025.</p>
+        <p>O Luminarls foi criado em 21 de janeiro de 2024.</p>
       </div>
     </div>
+
     <!-- Pergunta 2 -->
     <div class="faq-item">
       <button class="faq-question">Quanto tempo levou para fazer o Luminarls?</button>
@@ -276,28 +277,6 @@
       </div>
     </div>
 
-    <script>
-      function calcularTempoDesenvolvimento(dataInicial) {
-        const inicio = new Date(dataInicial);
-        const agora = new Date();
-
-        const diffMs = agora - inicio;
-        const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-        const anos = Math.floor(diffDias / 365);
-        const meses = Math.floor((diffDias % 365) / 30);
-        const dias = diffDias % 30;
-
-        let resultado = '';
-        if (anos > 0) resultado += `${anos} ano${anos > 1 ? 's' : ''}, `;
-        if (meses > 0) resultado += `${meses} mês${meses > 1 ? 'es' : ''}, `;
-        resultado += `${dias} dia${dias !== 1 ? 's' : ''}`;
-
-        return resultado;
-      }
-
-      document.getElementById("tempoRealLuminarls").textContent = calcularTempoDesenvolvimento("2024-01-21");
-    </script>
-
     <!-- Pergunta 3 -->
     <div class="faq-item">
       <button class="faq-question">Haverá alguma atualização em breve?</button>
@@ -305,6 +284,7 @@
         <p>Sim! Atualizações estão sempre no radar para trazer novidades e melhorias ao bot.</p>
       </div>
     </div>
+
     <!-- Pergunta 4 -->
     <div class="faq-item">
       <button class="faq-question">O Luminarls será gratuito para sempre?</button>
@@ -312,6 +292,7 @@
         <p>Sim, o Luminarls foi desenvolvido com a intenção de ser gratuito para todos os usuários.</p>
       </div>
     </div>
+
     <!-- Pergunta 5 -->
     <div class="faq-item">
       <button class="faq-question">O código do Luminarls está disponível ao público?</button>
@@ -319,6 +300,7 @@
         <p>Por enquanto, o código não está disponível ao público. Mas isso pode mudar no futuro!</p>
       </div>
     </div>
+
     <!-- Pergunta 6 -->
     <div class="faq-item">
       <button class="faq-question">E quanto ao tempo de atividade do Luminarls?</button>
@@ -326,6 +308,7 @@
         <p>O Luminarls é projetado para oferecer alta disponibilidade. Embora interrupções possam acontecer, buscamos garantir o máximo de tempo de atividade.</p>
       </div>
     </div>
+
     <!-- Pergunta 7 -->
     <div class="faq-item">
       <button class="faq-question">Quais bibliotecas foram usadas para codificar o Luminarls?</button>
@@ -350,7 +333,7 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 4px solid black; /* Borda preta */
+    border: 4px solid black;
   }
 
   .creator-info {
@@ -391,13 +374,19 @@
   }
 
   .faq-answer {
-    padding: 10px 15px;
-    margin-top: 5px;
-    font-size: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
     background: #ffe6f0;
     border-left: 4px solid #d63384;
     border-radius: 6px;
-    display: none;
+    padding: 0 15px;
+    font-size: 1rem;
+  }
+
+  .faq-answer.active {
+    padding: 10px 15px;
+    max-height: 500px;
   }
 
   .faq-answer p {
@@ -407,18 +396,34 @@
 </style>
 
 <script>
+  // Animação suave no FAQ
   document.querySelectorAll(".faq-question").forEach(button => {
     button.addEventListener("click", () => {
       const answer = button.nextElementSibling;
-
-      // Alterna a exibição (toggle)
-      if (answer.style.display === "block") {
-        answer.style.display = "none";
-      } else {
-        answer.style.display = "block";
-      }
+      answer.classList.toggle("active");
     });
   });
+
+  // Cálculo de tempo desde criação
+  function calcularTempoDesenvolvimento(dataInicial) {
+    const inicio = new Date(dataInicial);
+    const agora = new Date();
+
+    const diffMs = agora - inicio;
+    const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const anos = Math.floor(diffDias / 365);
+    const meses = Math.floor((diffDias % 365) / 30);
+    const dias = diffDias % 30;
+
+    let resultado = '';
+    if (anos > 0) resultado += `${anos} ano${anos > 1 ? 's' : ''}, `;
+    if (meses > 0) resultado += `${meses} mês${meses > 1 ? 'es' : ''}, `;
+    resultado += `${dias} dia${dias !== 1 ? 's' : ''}`;
+
+    return resultado;
+  }
+
+  document.getElementById("tempoRealLuminarls").textContent = calcularTempoDesenvolvimento("2024-01-21");
 </script>
 
 <section id="comandos">
