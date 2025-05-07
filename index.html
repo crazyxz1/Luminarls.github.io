@@ -265,7 +265,7 @@
     <div class="faq-item">
       <button class="faq-question">Quando o Luminarls foi criado?</button>
       <div class="faq-answer">
-        <p>O Luminarls foi criado em 21 de janeiro de 2024.</p>
+        <p>O Luminarls foi criado em 20 de janeiro de 2025.</p>
       </div>
     </div>
 
@@ -455,6 +455,7 @@
       padding: 20px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease;
+      cursor: pointer;
     }
 
     .command-box:hover {
@@ -477,27 +478,76 @@
       font-size: 0.95rem;
       margin: 2px 0;
     }
+
+    .command-faq {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      background: #ffe6f0;
+      border-left: 4px solid #d63384;
+      border-radius: 8px;
+    }
   </style>
 
   <h2>Comandos</h2>
   <div class="commands">
-    <div class="command-box">
+    <div class="command-box" onclick="toggleFaq(this)">
       <strong>Comandos principais:</strong>
       <code>!luzes</code><br>
       <code>!luz</code><br>
       <code>!avatar</code><br>
       <code>!banner</code><br>
       <code>!pay</code>
+
+      <div class="command-faq">
+        <p><strong>Explicação:</strong></p>
+        <ul>
+          <li><code>!luzes</code> - Mostra quantas luzes você possui.</li>
+          <li><code>!luz</code> - Verifica a luz de outro usuário.</li>
+          <li><code>!avatar</code> - Exibe o avatar de um usuário.</li>
+          <li><code>!banner</code> - Mostra o banner de um usuário (se houver).</li>
+          <li><code>!pay</code> - Envia luzes para outro usuário.</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="command-box">
+    <div class="command-box" onclick="toggleFaq(this)">
       <strong>Comandos em slash:</strong>
       <code>/luzguia</code><br>
       <code>/luminfo</code><br>
       <code>/avatar</code><br>
       <code>/rank</code>
+
+      <div class="command-faq">
+        <p><strong>Explicação:</strong></p>
+        <ul>
+          <li><code>/luzguia</code> - Acessa o sistema de economia do bot.</li>
+          <li><code>/luminfo</code> - Informações gerais sobre o Luminarls.</li>
+          <li><code>/avatar</code> - Mostra o avatar de alguém.</li>
+          <li><code>/rank</code> - Exibe o ranking de usuários com mais luzes.</li>
+        </ul>
+      </div>
     </div>
   </div>
+
+  <script>
+    let openFaq = null;
+
+    function toggleFaq(box) {
+      const faq = box.querySelector(".command-faq");
+
+      // Se uma FAQ já estiver aberta, fecha ela
+      if (openFaq && openFaq !== faq) {
+        openFaq.style.display = "none";
+      }
+
+      // Alterna a exibição da FAQ atual
+      faq.style.display = faq.style.display === "block" ? "none" : "block";
+
+      // Atualiza a variável openFaq para a FAQ aberta
+      openFaq = faq.style.display === "block" ? faq : null;
+    }
+  </script>
 </section>
 
 <section id="sugestoes">
